@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "certbot-dns-namecom"
+version = "5.5.0.dev0"
+dependencies = [
+    "acme",
+    "certbot>=2.0",
+    "requests",
+]
+description = "Name.com DNS Authenticator plugin for the Certbot project"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.10"
+authors = [
+    { name = "Zdenek Behan" },
+    { name = "Claude Opus 4.6" },
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Plugins",
+    "Intended Audience :: System Administrators",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Security",
+    "Topic :: System :: Installation/Setup",
+    "Topic :: System :: Networking",
+    "Topic :: System :: Systems Administration",
+    "Topic :: Utilities",
+]
+
+[project.optional-dependencies]
+docs = [
+    "Sphinx>=1.0",
+    "sphinx_rtd_theme",
+]
+test = [
+    "pytest",
+]
+
+[project.entry-points."certbot.plugins"]
+dns-namecom = "certbot_dns_namecom._internal.dns_namecom:Authenticator"
+
+[project.urls]
+Homepage = "https://github.com/raincz/certbot-dns-namecom"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["src"]
